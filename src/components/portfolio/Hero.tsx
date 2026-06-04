@@ -103,7 +103,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 text-muted-foreground sm:bottom-8 sm:block"
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 text-muted-foreground sm:bottom-8"
       >
         <div className="flex flex-col items-center gap-2">
           <MousePointerClick size={14} />

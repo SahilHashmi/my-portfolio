@@ -20,11 +20,19 @@ export function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 12);
-      if (open) setOpen(false);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const onScrollClose = () => {
+      setOpen(false);
+    };
+    window.addEventListener("scroll", onScrollClose, { passive: true });
+    return () => window.removeEventListener("scroll", onScrollClose);
   }, [open]);
 
   // Close mobile menu on outside click
@@ -120,6 +128,19 @@ export function Navbar() {
                 {l.label}
               </a>
             ))}
+            <div className="mt-2 border-t border-white/10 px-2 pt-3 pb-1">
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-sm font-medium text-foreground transition-all hover:border-primary/40 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+                </span>
+                Available
+              </a>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -106,9 +106,15 @@ export function Experience() {
                     <span className="absolute left-[9px] top-1.5 h-3 w-3 rounded-full border border-white/30 bg-background ring-4 ring-primary/20" />
                   </div>
                   <div className={`hidden md:block ${left ? "text-right" : "text-left"}`}>
-                    <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                      <Briefcase size={12} />
-                      {e.period}
+                    <div className={`inline-flex flex-col gap-1.5 ${left ? "items-end" : "items-start"}`}>
+                      <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                        <Briefcase size={12} />
+                        {e.period}
+                      </div>
+                      <div className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                        <MapPin size={12} />
+                        {e.location}
+                      </div>
                     </div>
                   </div>
                   <div className="relative">
