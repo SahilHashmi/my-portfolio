@@ -11,7 +11,7 @@ const pillars = [
 
 export function About() {
   return (
-    <section id="about" className="relative py-32">
+    <section id="about" className="relative py-16 sm:py-20 md:py-28 lg:py-32">
       <div aria-hidden className="absolute left-1/2 top-0 -z-10 h-[400px] w-[800px] -translate-x-1/2 rounded-full bg-primary/10 blur-[120px]" />
       <div className="mx-auto max-w-6xl px-6">
         <SectionHeader

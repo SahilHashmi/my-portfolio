@@ -72,8 +72,8 @@ const experience = [
 
 export function Experience() {
   return (
-    <section id="experience" className="relative py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="experience" className="relative py-16 sm:py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Experience"
           title="A timeline of shipped work."
@@ -87,7 +87,7 @@ export function Experience() {
             className="absolute left-4 top-2 h-full w-px bg-gradient-to-b from-primary/40 via-white/10 to-transparent md:left-1/2"
           />
 
-          <div className="space-y-10">
+          <div className="space-y-8 sm:space-y-10">
             {experience.map((e, i) => {
               const left = i % 2 === 0;
               return (
@@ -97,7 +97,7 @@ export function Experience() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className={`relative grid grid-cols-[24px_1fr] gap-5 md:grid-cols-2 md:gap-12 ${
+                  className={`relative grid grid-cols-[24px_1fr] gap-3 sm:gap-5 md:grid-cols-2 md:gap-12 ${
                     left ? "" : "md:[&>*:first-child]:order-2"
                   }`}
                 >
@@ -113,21 +113,27 @@ export function Experience() {
                   </div>
                   <div className="relative">
                     {/* Center dot (desktop) */}
-                    <span className="absolute -left-[31px] top-7 hidden h-3 w-3 -translate-x-1/2 rounded-full border border-white/30 bg-background ring-4 ring-primary/15 md:block" style={{ left: left ? "-49px" : "-49px" }} />
-                    <div className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-6 hover-glow">
+                    <span
+                      className={`absolute top-7 hidden h-3 w-3 rounded-full border border-white/30 bg-background ring-4 ring-primary/15 md:block ${
+                        left
+                          ? "-left-[calc(24px+50%)] -translate-x-1/2"
+                          : "-right-[calc(24px+50%)] translate-x-1/2"
+                      }`}
+                    />
+                    <div className="group relative overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] p-4 sm:p-6 hover-glow">
                       <div className="absolute -right-16 -top-16 h-40 w-40 rounded-full bg-primary/10 opacity-0 blur-2xl transition-opacity group-hover:opacity-100" />
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="font-display text-lg font-medium text-foreground">{e.company}</h3>
+                        <h3 className="font-display text-base font-medium text-foreground sm:text-lg">{e.company}</h3>
                         <span className="rounded-full border border-primary/30 bg-primary/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-primary">
                           {e.type}
                         </span>
                       </div>
                       <div className="mt-1 text-sm text-muted-foreground">{e.role}</div>
-                      <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground md:hidden">
+                      <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground md:hidden">
                         <span>{e.period}</span>
                         <span className="inline-flex items-center gap-1"><MapPin size={11} />{e.location}</span>
                       </div>
-                      <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                      <ul className="mt-3 space-y-2 text-sm text-muted-foreground sm:mt-4">
                         {e.points.map((p) => (
                           <li key={p} className="flex gap-2">
                             <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full bg-primary/70" />

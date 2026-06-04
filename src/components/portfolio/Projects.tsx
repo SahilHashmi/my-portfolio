@@ -164,8 +164,8 @@ export function Projects() {
   const filteredProjects = projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="projects" className="relative py-32">
-      <div className="mx-auto max-w-6xl px-6">
+    <section id="projects" className="relative py-16 sm:py-20 md:py-28 lg:py-32">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeader
           eyebrow="Selected Work"
           title="Products that earned their pixels."
@@ -173,16 +173,16 @@ export function Projects() {
         />
 
         {/* Category Tabs */}
-        <div className="mb-12 flex flex-wrap items-center justify-center gap-2 sm:gap-4">
+        <div className="mb-8 flex flex-wrap items-center justify-center gap-1.5 sm:mb-12 sm:gap-4">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`relative rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+              className={`relative rounded-full px-3.5 py-2 text-xs font-medium transition-colors sm:px-5 sm:py-2.5 sm:text-sm ${
                 activeCategory === category
                   ? "text-foreground"
                   : "text-muted-foreground hover:bg-white/5 hover:text-foreground"
-              }`}
+              } focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50`}
             >
               {activeCategory === category && (
                 <motion.div
@@ -197,7 +197,7 @@ export function Projects() {
           ))}
         </div>
 
-        <motion.div layout className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div layout className="grid gap-5 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((p, i) => (
               <motion.a
@@ -216,7 +216,7 @@ export function Projects() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -20 }}
                 transition={{ duration: 0.4, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_30px_80px_-30px_rgba(91,140,255,0.35)]`}
+                className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-4 transition-all duration-500 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_30px_80px_-30px_rgba(91,140,255,0.35)] sm:p-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50`}
               >
                 {/* Gradient backdrop */}
                 <div
@@ -224,7 +224,7 @@ export function Projects() {
                 />
 
                 {/* Preview image */}
-                <div className="relative mb-5 aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-background/40">
+                <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-xl border border-white/10 bg-background/40 sm:mb-5">
                   <img
                     src={p.cover}
                     alt={`${p.name} preview`}
@@ -237,27 +237,27 @@ export function Projects() {
 
                   {/* View Project Button */}
                   <div className="absolute inset-0 grid place-items-center bg-background/40 opacity-0 backdrop-blur-sm transition-opacity duration-500 group-hover:opacity-100">
-                    <div className="flex items-center gap-2 rounded-full border border-white/20 bg-background/80 px-4 py-2 text-sm font-medium text-foreground shadow-xl">
+                    <div className="flex items-center gap-2 rounded-full border border-white/20 bg-background/80 px-4 py-2 text-xs font-medium text-foreground shadow-xl sm:text-sm">
                       {p.gallery ? "View Gallery" : "View Project"} <ExternalLink size={14} />
                     </div>
                   </div>
 
-                  <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-full border border-white/15 bg-background/70 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-foreground/80 backdrop-blur">
+                  <div className="absolute bottom-2 left-2 flex items-center gap-2 rounded-full border border-white/15 bg-background/70 px-2.5 py-0.5 text-[9px] font-medium uppercase tracking-widest text-foreground/80 backdrop-blur sm:bottom-3 sm:left-3 sm:px-3 sm:py-1 sm:text-[10px]">
                     <span className="h-1 w-1 rounded-full bg-primary" />
                     {p.category}
                   </div>
-                  <div className="absolute right-3 top-3 grid h-9 w-9 translate-y-1 place-items-center rounded-full border border-white/15 bg-background/70 text-foreground opacity-0 backdrop-blur transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+                  <div className="absolute right-2 top-2 grid h-8 w-8 translate-y-1 place-items-center rounded-full border border-white/15 bg-background/70 text-foreground opacity-0 backdrop-blur transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100 sm:right-3 sm:top-3 sm:h-9 sm:w-9">
                     <ArrowUpRight size={15} />
                   </div>
                 </div>
 
                 <div className="flex-grow">
-                  <div className="flex items-center gap-2">
-                    <h3 className="font-display text-xl font-medium text-foreground transition-colors group-hover:text-primary">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="font-display text-lg font-medium text-foreground transition-colors group-hover:text-primary sm:text-xl">
                       {p.name}
                     </h3>
                     {p.status && (
-                      <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-amber-400">
+                      <span className="inline-flex items-center gap-1 rounded-full border border-amber-400/30 bg-amber-400/10 px-2 py-0.5 text-[9px] font-semibold uppercase tracking-wider text-amber-400 sm:px-2.5 sm:text-[10px]">
                         <span className="relative flex h-1.5 w-1.5">
                           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
                           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
@@ -266,14 +266,14 @@ export function Projects() {
                       </span>
                     )}
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.description}</p>
+                  <p className="mt-2 text-xs text-muted-foreground sm:text-sm">{p.description}</p>
                 </div>
 
-                <div className="mt-5 flex flex-wrap gap-1.5">
+                <div className="mt-4 flex flex-wrap gap-1 sm:mt-5 sm:gap-1.5">
                   {p.tags.map((t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-1 text-[11px] text-foreground/80"
+                      className="rounded-full border border-white/10 bg-white/[0.04] px-2 py-0.5 text-[10px] text-foreground/80 sm:px-2.5 sm:py-1 sm:text-[11px]"
                     >
                       {t}
                     </span>
@@ -287,25 +287,25 @@ export function Projects() {
 
       {/* Lightbox / Gallery Modal */}
       <Dialog open={!!activeProject} onOpenChange={(open) => !open && setActiveProject(null)}>
-        <DialogContent className="max-w-5xl border-white/10 bg-background/95 p-6 backdrop-blur-xl [&>button]:hidden sm:p-10">
+        <DialogContent className="max-w-[95vw] border-white/10 bg-background/95 p-4 backdrop-blur-xl [&>button]:hidden sm:max-w-3xl sm:p-6 md:max-w-4xl md:p-8 lg:max-w-5xl lg:p-10">
           <VisuallyHidden>
             <DialogTitle>{activeProject?.name}</DialogTitle>
             <DialogDescription>{activeProject?.tagline}</DialogDescription>
           </VisuallyHidden>
 
-          <div className="mb-6 flex items-start justify-between gap-4">
+          <div className="mb-4 flex items-start justify-between gap-3 sm:mb-6 sm:gap-4">
             <div>
-              <h3 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
+              <h3 className="font-display text-xl font-medium text-foreground sm:text-2xl md:text-3xl">
                 {activeProject?.name}
               </h3>
-              <p className="mt-1 text-sm text-muted-foreground">{activeProject?.tagline}</p>
+              <p className="mt-1 text-xs text-muted-foreground sm:text-sm">{activeProject?.tagline}</p>
             </div>
             <button
               aria-label="Close"
               onClick={() => setActiveProject(null)}
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-foreground/70 transition hover:bg-white/10 hover:text-foreground"
+              className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/10 bg-white/[0.04] text-foreground/70 transition hover:bg-white/10 hover:text-foreground sm:h-10 sm:w-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
             >
-              <X size={18} />
+              <X size={16} className="sm:h-[18px] sm:w-[18px]" />
             </button>
           </div>
 
@@ -314,18 +314,19 @@ export function Projects() {
               <CarouselContent>
                 {activeProject.gallery.map((imgSrc, index) => (
                   <CarouselItem key={index}>
-                    <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-background/40">
+                    <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-background/40 sm:rounded-xl">
                       <img
                         src={imgSrc}
                         alt={`${activeProject.name} screen ${index + 1}`}
+                        loading="lazy"
                         className="max-h-full w-full object-contain"
                       />
                     </div>
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious className="-left-4 bg-background/80 backdrop-blur sm:-left-12" />
-              <CarouselNext className="-right-4 bg-background/80 backdrop-blur sm:-right-12" />
+              <CarouselPrevious className="left-1 bg-background/80 backdrop-blur sm:left-2 md:-left-4 lg:-left-12" />
+              <CarouselNext className="right-1 bg-background/80 backdrop-blur sm:right-2 md:-right-4 lg:-right-12" />
             </Carousel>
           )}
         </DialogContent>

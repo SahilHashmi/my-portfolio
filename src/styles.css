@@ -1,10 +1,9 @@
 @import "tailwindcss" source(none);
-@source "../src";
 @import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
-
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@source "../src";
+@custom-variant dark (&:is(.dark *));
 
 /*
  * Design system definition.
@@ -132,6 +131,7 @@
   html {
     scroll-behavior: auto; /* Lenis handles scroll */
     background: var(--color-background);
+    overflow-x: hidden;
   }
 
   ::selection {
@@ -239,3 +239,22 @@
 ::-webkit-scrollbar-track { background: #050505; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 999px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(91,140,255,0.4); }
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.08) #050505;
+}
+
+/* Reduced motion: disable all custom animations for a11y */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .marquee { animation: none; }
+  .float-slow { animation: none; }
+  .pulse-glow { animation: none; }
+}
