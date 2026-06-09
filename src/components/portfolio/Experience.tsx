@@ -46,7 +46,7 @@ const experience = [
     company: "ClumpCoder",
     role: "Full Stack Developer",
     type: "Full-Time",
-    period: "Aug 05, 2022 – June 20, 2025",
+    period: "Jan 18, 2024 – June 20, 2025",
     location: "Indore, M.P. | Onsite",
     points: [
       "Developed and deployed multiple full-stack applications including manufacturing ERP systems and live streaming platforms. Collaborated with cross-functional teams to deliver high-quality solutions.",
