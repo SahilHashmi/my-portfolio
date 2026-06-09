@@ -20,6 +20,7 @@ import cp5 from "@/assets/projects/5.png";
 import cp6 from "@/assets/projects/6.png";
 import cp7 from "@/assets/projects/7.png";
 import cp8 from "@/assets/projects/8.png";
+import omniVid from "@/assets/projects/omni_vid.mp4";
 
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -43,6 +44,7 @@ type Project = {
   cover: string;
   liveUrl: string;
   gallery?: string[];
+  video?: string;
   status?: string;
 };
 
@@ -89,6 +91,7 @@ const projects: Project[] = [
     accent: "from-violet-500/30 to-fuchsia-500/10",
     cover: cp6,
     liveUrl: "https://omniai.app",
+    video: omniVid,
     gallery: [cp6, cp7, cp8],
   },
   // Websites
@@ -309,10 +312,25 @@ export function Projects() {
             </button>
           </div>
 
-          {activeProject?.gallery && (
+          {(activeProject?.gallery || activeProject?.video) && (
             <Carousel className="w-full">
               <CarouselContent>
-                {activeProject.gallery.map((imgSrc, index) => (
+                {/* Video slide — plays first if present */}
+                {activeProject.video && (
+                  <CarouselItem key="video">
+                    <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-background/40 sm:rounded-xl">
+                      <video
+                        src={activeProject.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="max-h-full w-full object-contain"
+                      />
+                    </div>
+                  </CarouselItem>
+                )}
+                {activeProject.gallery?.map((imgSrc, index) => (
                   <CarouselItem key={index}>
                     <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-background/40 sm:rounded-xl">
                       <img

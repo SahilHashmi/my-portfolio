@@ -86,7 +86,7 @@ export function Hero() {
           className="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-px overflow-hidden rounded-2xl border border-white/8 bg-white/[0.03] sm:mt-16 sm:grid-cols-3"
         >
           {[
-            { k: "3.9+", v: "Years experience" },
+            { k: "2.4+", v: "Years experience" },
             { k: "40+", v: "Projects shipped" },
             { k: "12+", v: "Stacks mastered" },
           ].map((s) => (
