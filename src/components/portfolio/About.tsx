@@ -58,7 +58,7 @@ export function About() {
             <div className="absolute -right-20 bottom-0 h-60 w-60 rounded-full bg-indigo-500/15 blur-3xl" />
           </div>
           <p className="max-w-3xl font-display text-2xl leading-snug text-foreground/90 sm:text-3xl text-pretty">
-            With 2.4+ years of experience building products at the intersection of{" "}
+            With 4+ years of experience building products at the intersection of{" "}
             <span className="accent-text">design, engineering and AI</span> — partnering with founders to ship faster, scale further, and look exceptional doing it.
           </p>
           <p className="mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground">
